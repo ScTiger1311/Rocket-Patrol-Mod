@@ -89,6 +89,25 @@ class Play extends Phaser.Scene
         }
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
 
+        //display time left
+        this.timeLeft = game.settings.gameTimer; //remaining time. A really inefficient and bad implementation. But I don't think it matters that much.
+        let timeConfig = 
+        {
+            fontFamily: "Courier",
+            fontSize: "28px",
+            backgroundColor: "#F3B141",
+            color: "#843605",
+            align: "right",
+            padding: 
+            {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 100,
+        }
+        this.timeLeftText = this.add.text(500, borderUISize + borderPadding*2, this.timeLeft / 1000, timeConfig);
+        
+
         //game over flag
         this.gameOver = false;
 
@@ -147,6 +166,17 @@ class Play extends Phaser.Scene
             this.p1Rocket.reset();
             this.shipExplode(this.ship01);
         }
+        //console.log("timeLeft: " + this.timeLeft);
+        
+        if(this.timeLeft - delta >= 0)
+        {
+            this.timeLeft -= delta;
+        }
+        else
+        {
+            this.timeLeft = 0.000;
+        }
+        this.timeLeftText.text = this.timeLeft / 1000;
     }
 
     checkCollision(rocket, ship)
