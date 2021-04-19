@@ -45,6 +45,12 @@ class Play extends Phaser.Scene
 
     create()
     {
+        this.music = this.sound.add("music_kawai", 
+        {
+            loop:true
+        });
+        this.music.play();
+
         this.staticBackGround = this.add.sprite(0, 0, "staticBG").setOrigin(0,0);
         this.backgroundAnim = this.add.sprite(0, 0, "cityFlyby").setOrigin(0,0);
         //black UI background
@@ -129,7 +135,6 @@ class Play extends Phaser.Scene
         }
         this.timeLeftText = this.add.text(500, borderUISize + borderPadding*2, this.timeLeft / 1000, timeConfig);
         
-
         //game over flag
         this.gameOver = false;
 
@@ -204,10 +209,10 @@ class Play extends Phaser.Scene
     checkCollision(rocket, ship)
     {
         //simple AABB checking
-        if( rocket.x < ship.x + ship.width && 
-            rocket.x + rocket.width > ship.x &&
-            rocket.y < ship.y + ship.height &&
-            rocket.height+rocket.y > ship.y)
+        if( rocket.x + rocket.width/2 < ship.x + ship.width && 
+            rocket.x + rocket.width > ship.x + ship.width/2 &&
+            rocket.y + rocket.height/2 < ship.y + ship.height &&
+            rocket.height+rocket.y > ship.y + ship.height/2)
             {
                 return true;
             }
