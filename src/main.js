@@ -4,7 +4,8 @@ Mods:
 Game Physics not tied to frame rate. Used a deltaTime to accomplish this. Approved by Nathan in discord, (10 points) 1 hour
 Timer is shown (10 points). 1.5 hours but only because I was foolishly stubborn and tried to do it a dumb way first
 Redesign the game's artwork, ui, and sound to change it's aesthetic (60 points), 6 hours. 
-
+Add your own copyright free music (5 points) 1 hour.
+Increase speed after half the time has elapsed (5 points). 20 minutes
 
 */
 
