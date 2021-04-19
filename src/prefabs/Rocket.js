@@ -11,6 +11,21 @@ class Rocket extends Phaser.GameObjects.Sprite
 
         this.sfxRocket = scene.sound.add("sfx_rocket"); //add rocket sfx
 
+        this.anims.create(
+            {
+                key: "rocketAnim", 
+                frames: this.anims.generateFrameNumbers("rocket", 
+                {
+                    start: 1,
+                    end: 29,
+                    nextAnim: "rocketAnim",
+                }),
+                frameRate: 10,
+            });
+
+        this.anims.play("rocketAnim");
+        this.anims.setRepeat(-1);
+
     }
 
     update(time, delta)
